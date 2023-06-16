@@ -35,10 +35,23 @@ export const loginController = async (req, res, next) => {
                 req.session.cartId = createCart._id
                 req.session.userData = validate
             }
-        res.status(304).redirect('/products');
+        res.status(304).redirect('/productos');
         }       
     } catch (error) {
         console.log (error);
     }
 }
 
+export const logoutController = async (req, res, next) => {
+    try {
+        req.session.destroy ((err) => {
+            if (err) {
+                console.log (err);
+            } else {
+                res.redirect ("/login");
+            }
+        })
+    } catch (error) {
+        console.log (error);
+    }
+}

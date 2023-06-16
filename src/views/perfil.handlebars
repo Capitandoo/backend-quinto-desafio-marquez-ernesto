@@ -1,20 +1,15 @@
-<section class="perfil-container">
   {{#if error.status}}
     <p>{{error.message}}</p>
   {{/if}}
-  <article>
+  <div>
     <h1>Perfil</h1>
     <div class="user_info">
-      <p>First Name: {{user.first_name}}</p>
-      <p>Last Name: {{user.last_name}}</p>
-      <p>Email: {{user.email}}</p>
-      <p>Age: {{user.age}}</p>
+      {{#each userData}}
+      <p>First Name: {{this.first_name}}</p>
+      <p>Last Name: {{this.last_name}}</p>
+      <p>Email: {{this.email}}</p>
+      <p>Age: {{this.age}}</p>
+      {{/each}}
     </div>
-    <a
-      href="/logout"
-      class="btn-primary"
-      id="logout"
-      style="display: block;"
-    >Log Out</a>
-  </article>
-</section>
+    <a href="/logout" class="btn-primary" id="logout" style="display: block;">Log Out</a>
+  </div>

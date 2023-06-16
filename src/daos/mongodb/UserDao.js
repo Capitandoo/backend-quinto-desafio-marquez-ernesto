@@ -7,10 +7,10 @@ export default class UserManager {
       const { email, password } = user;
       const existUser = await userModel.find({email});
       if(existUser.length === 0){
-        if(email === 'adminCoder@coder.com' && password === 'adminCoder123'){
+        if(email === 'adminCoder@coder.com' && password === 'adminCod3r123'){
           return await userModel.create({...user, role: 'admin'});
         } else {
-          const newUser = await userModel.create(user);
+          const newUser = await userModel.create({...user, role: "usuario"});
           return newUser
         }
       } else {
