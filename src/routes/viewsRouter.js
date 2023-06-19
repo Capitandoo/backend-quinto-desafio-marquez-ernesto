@@ -9,16 +9,6 @@ const router = Router ();
 const productManager = new ProductDao ();
 const cartDao = new CartDao ();
 
-// router.get ("/", async (req, res) => {
-//   const allProducts = await productManager.getProducts();
-//   res.render("home", {
-//     productos: allProducts,
-//   });
-// });
-
-// router.get ("/realtimeproducts", async (req, res) => {
-//   res.render ("realtimeproducts");
-// });
 
 router.get("/login", async (req, res) => {
   res.render("login", {
@@ -45,45 +35,12 @@ router.get("/perfil", async (req, res) => {
 
 router.get("/productos", async (req, res) => {
   const userData = req.session.userData;
-  const allProducts = await productManager.getProducts();
+  const productos = await productManager.getProducts();
   res.render ("productos", {
     userData: userData,
-    productos: allProducts
+    productos: productos.docs.map(product=>product.toJSON()),
   })
 });
-
-// router.get("/product/:pid", async (request, response) => {
-//   let { pid } = request.params;
-//   let product = await productManager.getProductById(pid);
-//   let error = product?.error ? true : false;
-//   response.render("productdetail", {
-//     error,
-//     product,
-//     title: `Product ${product.title}`,
-//     style: "home",
-//     logued: true,
-//   });
-// });
-
-// router.get("/newproduct", async (request, response) => {
-//   response.render("newproduct", {
-//     title: "Products",
-//     style: "home",
-//     logued: true,
-//   });
-// });
-
-// router.get("/carts/:cid", async (request, response) => {
-//   let { cid } = request.params;
-//   let { products, _id } = await cartDao.getCart(cid);
-//   response.render("carts", {
-//     title: "Products",
-//     style: "home",
-//     products,
-//     _id,
-//     logued: true,
-//   });
-// });
 
 router.get("/logout", async (req, res) => {
   req.session.destroy((err) => {

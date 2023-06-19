@@ -1,28 +1,26 @@
-  {{#if error.status}}
-    <p>{{error.message}}</p>
-  {{/if}}
-  <div>
-    <h1>Perfil</h1>
-    <div class="user_info">
-      {{#each userData}}
-      <p>First Name: {{this.first_name}}</p>
-      <p>Last Name: {{this.last_name}}</p>
-      <p>Email: {{this.email}}</p>
-      <p>Age: {{this.age}}</p>
-      {{/each}}
-    </div>
-    <a href="/logout" class="btn-primary" id="logout" style="display: block;">Log Out</a>
+{{#if error.status}}
+  <p>{{error.message}}</p>
+{{/if}}
+<div>
+  <h1>¡¡Bienvenido!!</h1>
+  <div class="user_info">
+    {{#each userData}}
+      <p>Nombre: {{this.first_name}}</p>
+      <p>Apellido: {{this.last_name}}</p>
+      <p>Rol: {{this.rol}}</p>
+    {{/each}}
   </div>
-  <div>
-      {{#each productos}}
-        <div class="product">
-          <img src="/images/products/{{this.thumbnails.[0]}}" alt="{{this.title}}"/>
-          <h3>Title: {{this.title}}</h3>
-          <p>Price: {{this.price}}</p>
-          <div>
-            <a href="/product/{{this._id}}" class="btn-primary">Detail</a>
-            <button data-id="{{this._id}}" class="btn-primary addtocart">Add to cart</button>
-          </div>
-        </div>
-      {{/each}}
+  <a href="/logout">Log Out</a>
+</div>
+<div>
+  {{#each productos}}
+    <h3>Title: {{title}}</h3>
+    <P>Descripción: {{description}}</P>
+    <p>Price: {{price}}</p>
+    <p>Thumbnail: {{thumbnail}}</p>
+    <p>Code: {{code}}</p>
+    <p>Stock: {{stock}}</p>
+    <p>Status: {{status}}</p>
+    <p>Category: {{category}}</p>
+  {{/each}}
 </div>
